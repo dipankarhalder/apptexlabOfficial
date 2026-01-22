@@ -1,0 +1,7 @@
+.mainLogo {
+  width: 200px;
+}
+.mainLogo > svg {
+  width: 200px;
+  height: 38px;
+}

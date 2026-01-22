@@ -1,3 +1,14 @@
+.intro h1 {
+  max-width: 500px;
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.0714285714;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+  color: var(--text-primary);
+}
+
+
 import Image from "next/image";
 import styles from "./page.module.css";
 
