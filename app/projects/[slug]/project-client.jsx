@@ -80,24 +80,25 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
   if (!project) return null;
 
   return (
-    <div className="main_pages">
-      <div>
-        <div>
+    <div className="project_page">
+      <div className="project_nav">
+        <div className="link">
           <span>&#8592;&nbsp;</span>
           <Link href={`/projects/${prevProject.slug}`}>Prevoius</Link>
         </div>
-        <div>
+        <div className="project_page_scroll_progress">
           <p>{project.title}</p>
+          <div className="project_page_scroll_progress_bar"></div>
         </div>
-        <div>
+        <div className="link">
           <span>&#8594;&nbsp;</span>
           <Link href={`/projects/${nextProject.slug}`}>Next</Link>
         </div>
       </div>
-      <div>
+      <div className="project_hero">
         <p>{project.desc}</p>
       </div>
-      <div>
+      <div className="project_footer">
         <h4>{nextProject.title}</h4>
         <div>
           <p>Next Project</p>
