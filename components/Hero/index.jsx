@@ -12,7 +12,7 @@ export default function Hero() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const columns = gsap.utils.toArray(`.${heroStyles.column}`);
+      const columns = gsap.utils.toArray(".column");
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: heroRef.current,
