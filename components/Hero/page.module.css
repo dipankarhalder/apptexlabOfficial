@@ -1,0 +1,48 @@
+.main_hero_content {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* GSAP controls scroll now */
+  background: #111;
+  color: white;
+  display: flex;
+  overflow: hidden;
+}
+
+.hero_content {
+  position: relative;
+  z-index: 2;
+  width: 50%;
+  padding: 100px;
+}
+
+.hero_banner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: #ff4d4d;
+  display: flex;
+  overflow: hidden;
+  perspective: 1200px;
+}
+
+/* ABOUT */
+.main_about_content {
+  min-height: 100vh;
+  padding: 100px;
+  background: #f5f5f5;
+  color: #111;
+}
+
+.column {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  font-weight: bold;
+  transform-style: preserve-3d;
+  background: rgba(255, 255, 255, 0.1);
+  transform-origin: center;
+}
