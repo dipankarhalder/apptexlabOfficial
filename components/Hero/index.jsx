@@ -9,10 +9,18 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Hero() {
   const heroRef = useRef(null);
   const bannerRef = useRef(null);
+  const bannerColumnsRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const columns = gsap.utils.toArray(".column");
+      gsap.set(bannerColumnsRef.current, {
+        willChange: "transform",
+        rotationX: 15,
+        rotationY: -8,
+        rotationZ: 32,
+      });
+      gsap.set(bannerRef.current, { width: "50%" });
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: heroRef.current,
@@ -23,28 +31,20 @@ export default function Hero() {
         },
       });
 
-      tl.fromTo(
-        bannerRef.current,
-        { width: "50%" },
-        { width: "100%", ease: "none" },
+      tl.to(bannerRef.current, { width: "100%", ease: "none" }, 0);
+      tl.to(
+        bannerColumnsRef.current,
+        {
+          rotationX: 0,
+          rotationY: 0,
+          rotationZ: 0,
+          ease: "none",
+          onComplete: () => {
+            gsap.set(bannerColumnsRef.current, { willChange: "auto" });
+          },
+        },
         0,
       );
-
-      columns.forEach((col, index) => {
-        tl.fromTo(
-          col,
-          {
-            rotationZ: 45,
-            rotationY: index % 2 === 0 ? -15 : 15,
-          },
-          {
-            rotation: 0,
-            y: 0,
-            ease: "none",
-          },
-          0,
-        );
-      });
     }, heroRef);
 
     return () => ctx.revert();
@@ -52,22 +52,26 @@ export default function Hero() {
 
   return (
     <>
-      <section className="main_hero_content" ref={heroRef}>
-        <div className="hero_content">
-          <h1>Hero Content</h1>
-          <p>Scroll down and watch the banner expand</p>
+      <section className="appMainHeroContent" ref={heroRef}>
+        <div className="heroContent">
+          <div className="appHeroInsideContent">
+            <h1>One Lab, Many Industries</h1>
+            <p>
+              We craft innovative IT solutions and digital experiences that
+              drive growth across industries.
+            </p>
+          </div>
         </div>
-        <div className="hero_banner" ref={bannerRef}>
-          <div className="column">1</div>
-          <div className="column">2</div>
-          <div className="column">3</div>
-          <div className="column">4</div>
-          <div className="column">5</div>
+        <div className="heroBanner" ref={bannerRef}>
+          <div className="heroBannerColumns" ref={bannerColumnsRef}>
+            <div className="column"></div>
+            <div className="column"></div>
+            <div className="column"></div>
+            <div className="column"></div>
+            <div className="column"></div>
+            <div className="column"></div>
+          </div>
         </div>
-      </section>
-      <section className="main_about_content">
-        <h2>About Section</h2>
-        <p>This content comes after the hero animation.</p>
       </section>
     </>
   );

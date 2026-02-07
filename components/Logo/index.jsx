@@ -1,4 +1,11 @@
+import { useEffect } from "react";
+import gsap from "gsap";
+
 export const Logo = () => {
+  useEffect(() => {
+    gsap.to(".mainLogo", { x: 0, opacity: 1, duration: 1, delay: 1.2 });
+  }, []);
+
   return (
     <div className="mainLogo">
       <svg width="843" height="151" viewBox="0 0 843 151" fill="none">
